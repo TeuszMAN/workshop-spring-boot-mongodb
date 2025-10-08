@@ -1,0 +1,10 @@
+{
+  "name": "Spring Boot + MongoDB",
+  "dockerComposeFile": "compose.yml",
+  "service": "app",
+  "forwardPorts": [8080, 27017],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "remoteUser": "vscode"
+}
