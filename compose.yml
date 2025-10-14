@@ -1,17 +1,17 @@
 version: "3.8"
 services:
-  app:
-    image: mcr.microsoft.com/devcontainers/java:17
-    volumes:
-      - ..:/workspace:cached
-    command: sleep infinity
-    depends_on:
-      - mongodb
   mongodb:
     image: mongo:latest
-    restart: unless-stopped
     ports:
       - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: rootpass
+    volumes:
+      - mongo-data:/data/db
+
+    restart: unless-stopped
+
+volumes:
+  mongo-data:
+    driver: local
