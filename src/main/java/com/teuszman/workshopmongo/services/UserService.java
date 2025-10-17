@@ -1,4 +1,5 @@
 package com.teuszman.workshopmongo.services;
+import com.teuszman.workshopmongo.dto.UserDTO;
 import com.teuszman.workshopmongo.entities.User;
 import com.teuszman.workshopmongo.repositories.UserRepository;
 import com.teuszman.workshopmongo.services.exception.ObjectNotFoundException;
@@ -23,6 +24,14 @@ public class UserService {
         Optional<User> obj = repository.findById(id);
         
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+    }
+
+    public User insert(User obj){
+        return repository.insert(obj);
+    }
+
+    public User fromDTO(UserDTO dto) {
+        return new User(dto.getId(),dto.getName(),dto.getEmail());
     }
 
 }
